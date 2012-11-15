@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeject\HomeBundle\Controllers;
+namespace ProjectName\HomeBundle\Controllers;
 
 use Base\Application;
 
