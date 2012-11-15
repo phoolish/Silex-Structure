@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
 
-use Codeject\HomeBundle\Controllers\RootController as HomeBundleRootController;
+use ProjectName\HomeBundle\Controllers\RootController as HomeBundleRootController;
 
 class Application extends BaseApplication
 {
