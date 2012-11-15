@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-$app     = require_once __DIR__.'/src/Bootstrap.php';
-$console = require __DIR__.'/src/Console.php';
+require_once __DIR__.'/../Library/vendor/autoload.php';
 
-$console->run();
+$app = new Base\Application();
+$app->runConsole();
+
