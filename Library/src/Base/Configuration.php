@@ -62,7 +62,7 @@ class Configuration extends Application
     protected function registerRoutes()
     {
         $this->app->get('/', 'home.rootController:rootAction');
-        $this->app->get('/', 'secure.rootController:rootAction');
+        $this->app->get('/secure', 'secure.rootController:rootAction');
     }
 
     /**
