@@ -16,4 +16,3 @@ class RootController
         return 'Hello World';
     }
 }
-
