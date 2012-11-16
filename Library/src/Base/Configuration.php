@@ -1,9 +1,15 @@
 <?php
 
+namesapce Base;
+
+use Base\Services\Application;
+
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
+
+use Symfony\Component\Console\Application as ConsoleApplication;
 
 class Configuration extends Application
 {
@@ -55,20 +61,8 @@ class Configuration extends Application
      */
     protected function registerRoutes()
     {
-        /*
-         * @route /*
-         */
-        $app->get('/', 'home.rootController:rootAction');
-
-        /*
-         * @route /secure/*
-         */
-
-        $secure = $app['controller_factory']->requireHttps();
-
-        $secure->get('/', 'secure.rootController:rootAction');
-
-        $app->mount('/account', $account);
+        $this->app->get('/', 'home.rootController:rootAction');
+        $this->app->get('/', 'secure.rootController:rootAction');
     }
 
     /**
@@ -78,7 +72,9 @@ class Configuration extends Application
      */
     protected function registerConsoles()
     {
-        $console = new Application('Application Console', '0.1');
+        $console = new ConsoleApplication('Application Console', '0.1');
+
+        //$console->add();
 
         return $console;
     }

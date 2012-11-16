@@ -1,6 +1,6 @@
 <?php
 
-namespace Base;
+namespace Base\Services;
 
 use Silex\ControllerResolver as BaseControllerResolver;
 

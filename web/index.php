@@ -2,5 +2,5 @@
 
 require_once __DIR__.'/../Library/vendor/autoload.php';
 
-$app = new Configuration();
+$app = new Base\Configuration();
 $app->run();
