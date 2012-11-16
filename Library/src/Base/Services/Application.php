@@ -29,6 +29,7 @@ class Application extends BaseApplication
 
         $this->configureApplication();
         $this->registerControllers();
+        $this->registerModels();
         $this->registerRoutes();
         $this->registerConsoles();
     }

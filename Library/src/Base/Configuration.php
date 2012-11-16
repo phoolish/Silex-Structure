@@ -51,6 +51,18 @@ class Configuration extends Application
     }
 
     /**
+     * registerModels.
+     *
+     * Register your bundles Models.
+     */
+    protected function registerModels()
+    {
+        $this->app['home.rootModel'] = $this->app->share(function() use ($this->app) {
+            return new ProjectName\HomeBundle\Models\RootModel;
+        });
+    }
+
+    /**
      * registerRoutes.
      *
      * Register your bundles routes for the controllers.
