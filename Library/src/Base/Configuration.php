@@ -1,6 +1,6 @@
 <?php
 
-namesapce Base;
+namespace Base;
 
 use Base\Services\Application;
 

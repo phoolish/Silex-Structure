@@ -32,7 +32,7 @@ class ConsoleController extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $name = $input->getArgument('name');
-        
+
         if ($name) {
             $text = 'Hello '.$name;
         } else {
