@@ -10,21 +10,16 @@ use Silex\Application as BaseApplication;
 class Application extends BaseApplication
 {
     /**
-     * @var \Silex\Application
-     */
-    protected $app;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
         parent::__construct();
 
-        $this->app = $this;
+        $app = $this;
 
-        $this->app['resolver'] = $this->app->share(function () use ($this->app) {
-            return new ControllerResolver($this->app, $this->app['logger']);
+        $app['resolver'] = $app->share(function () use ($app) {
+            return new ControllerResolver($app, $app['logger']);
         });
 
         $this->configureApplication();

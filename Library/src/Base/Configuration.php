@@ -21,13 +21,15 @@ class Configuration extends Application
      */
     protected function configureApplication()
     {
-        $this->app['debug'] = true;
+        $app = $this;
 
-        $this->app->register(new SessionServiceProvider());
-        $this->app->register(new TwigServiceProvider());
-        $this->app->register(new UrlGeneratorServiceProvider());
+        $app['debug'] = true;
 
-        $this->app->register(new DoctrineServiceProvider(), array(
+        $app->register(new SessionServiceProvider());
+        $app->register(new TwigServiceProvider());
+        $app->register(new UrlGeneratorServiceProvider());
+
+        $app->register(new DoctrineServiceProvider(), array(
             'db.options' => array(
                 'driver'   => 'pdo_mysql',
                 'dbname'   => '',
@@ -45,8 +47,10 @@ class Configuration extends Application
      */
     protected function registerControllers()
     {
-        $this->app['home.rootController'] = $this->app->share(function() use ($this->app) {
-            return new ProjectName\HomeBundle\Controllers\RootController($this->app);
+        $app = $this;
+
+        $app['home.rootController'] = $app->share(function() use ($app) {
+            return new \ProjectName\HomeBundle\Controllers\RootController($app);
         });
     }
 
@@ -57,7 +61,9 @@ class Configuration extends Application
      */
     protected function registerModels()
     {
-        $this->app['home.rootModel'] = $this->app->share(function() use ($this->app) {
+        $app = $this;
+
+        $app['home.rootModel'] = $app->share(function() use ($app) {
             return new ProjectName\HomeBundle\Models\RootModel;
         });
     }
@@ -69,7 +75,9 @@ class Configuration extends Application
      */
     protected function registerRoutes()
     {
-        $this->app->get('/', 'home.rootController:rootAction');
+        $app = $this;
+
+        $app->get('/', 'home.rootController:rootAction');
     }
 
     /**
@@ -81,7 +89,7 @@ class Configuration extends Application
     {
         $console = new ConsoleApplication('Application Console', '0.1');
 
-        $console->add(new ProjectName\HomeBundle\Controllers\ConsoleController);
+        $console->add(new \ProjectName\HomeBundle\Controllers\ConsoleController);
 
         return $console;
     }

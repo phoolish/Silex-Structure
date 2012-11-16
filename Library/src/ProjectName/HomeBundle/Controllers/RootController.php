@@ -2,11 +2,11 @@
 
 namespace ProjectName\HomeBundle\Controllers;
 
-use Base\Application;
+use Base\Configuration;
 
 class RootController
 {
-    public function __construct(Application $app)
+    public function __construct(Configuration $app)
     {
 
     }
