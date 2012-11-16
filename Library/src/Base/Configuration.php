@@ -48,10 +48,6 @@ class Configuration extends Application
         $this->app['home.rootController'] = $this->app->share(function() use ($this->app) {
             return new ProjectName\HomeBundle\Controllers\RootController($this->app);
         });
-
-        $this->app['secure.rootController'] = $this->app->share(function() use ($this->app) {
-            return new ProjectName\SecureBundle\Controllers\RootController($this->app);
-        });
     }
 
     /**
@@ -62,7 +58,6 @@ class Configuration extends Application
     protected function registerRoutes()
     {
         $this->app->get('/', 'home.rootController:rootAction');
-        $this->app->get('/secure', 'secure.rootController:rootAction');
     }
 
     /**
@@ -74,7 +69,7 @@ class Configuration extends Application
     {
         $console = new ConsoleApplication('Application Console', '0.1');
 
-        //$console->add();
+        $console->add(new ProjectName\HomeBundle\Controllers\ConsoleController);
 
         return $console;
     }
