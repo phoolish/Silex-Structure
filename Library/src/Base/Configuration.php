@@ -8,6 +8,7 @@ use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
+use Silex\Provider\ServiceControllerServiceProvider
 
 use Symfony\Component\Console\Application as ConsoleApplication;
 
@@ -21,13 +22,12 @@ class Configuration extends Application
      */
     protected function configureApplication()
     {
-        $app = $this;
-
         $app['debug'] = true;
 
         $app->register(new SessionServiceProvider());
         $app->register(new TwigServiceProvider());
         $app->register(new UrlGeneratorServiceProvider());
+        $app->register(new ServiceControllerServiceProvider());
 
         $app->register(new DoctrineServiceProvider(), array(
             'db.options' => array(

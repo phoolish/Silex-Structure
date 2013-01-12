@@ -15,16 +15,10 @@ class Application extends BaseApplication
     public function __construct()
     {
         parent::__construct();
-
-        $app = $this;
-
-        $app['resolver'] = $app->share(function () use ($app) {
-            return new ControllerResolver($app, $app['logger']);
-        });
-
+        
         $this->configureApplication();
-        $this->registerControllers();
         $this->registerModels();
+        $this->registerControllers();
         $this->registerRoutes();
         $this->registerConsoles();
     }
