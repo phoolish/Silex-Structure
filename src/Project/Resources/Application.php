@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeject\Resources;
+namespace Project\Resources;
 
 use Silex\Application as BaseApplication;
 use Silex\Provider\ServiceControllerServiceProvider;
