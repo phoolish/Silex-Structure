@@ -1,6 +1,15 @@
 <?php
 
-require_once __DIR__.'/../Library/vendor/autoload.php';
+use Symfony\Component\Stopwatch\Stopwatch;
+use Project\Resources\Application;
 
-$app = new Base\Configuration();
+require_once __DIR__.'../vendor/autoload.php';
+
+$stopwatch = new Stopwatch();
+$stopwatch->start('bench');
+
+$app = new Application();
 $app->run();
+
+$stopwatch = $stopwatch->stop('bench');
+echo sprintf("<!--Time: %s Seconds, Memory: %s Megabyte-->", $stopwatch->getDuration() / 1000, ($stopwatch->getMemory() / 1024) / 1024 );
