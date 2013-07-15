@@ -1,7 +1,7 @@
 {
     "require": {
-        "silex/silex": "1.0.*@dev",
-        "symfony/stopwatch": "2.2.*"
+        "silex/silex": "1.*",
+        "symfony/stopwatch": "2.*"
     },
     "autoload": {
         "psr-0": { "Project": "src" }

@@ -3,8 +3,6 @@
 namespace Project\Resources;
 
 use Silex\Application as BaseApplication;
-use Silex\Provider\ServiceControllerServiceProvider;
-use Silex\Provider\UrlGeneratorServiceProvider;
 
 class Application extends BaseApplication
 {
@@ -17,11 +15,12 @@ class Application extends BaseApplication
     {
         parent::__construct();
 
-        $this->registerParameters()
-             ->registerServiceProviders()
-             ->registerControllers()
-             ->registerModels()
-             ->registerRoutes();
+        $this->registerParameters();
+        $this->registerServiceProviders();
+        $this->registerControllers();
+        $this->registerModels();
+        $this->registerMiddleware();
+        $this->registerRoutes();
     }
 
     /**
@@ -32,8 +31,6 @@ class Application extends BaseApplication
     private function registerParameters()
     {
         $this['debug'] = true;
-
-        return $this;
     }
 
     /**
@@ -43,10 +40,7 @@ class Application extends BaseApplication
      */
     private function registerServiceProviders()
     {
-        $this->register(new ServiceControllerServiceProvider());
-        $this->register(new UrlGeneratorServiceProvider());
 
-        return $this;
     }
 
     /**
@@ -59,8 +53,6 @@ class Application extends BaseApplication
     {
         // Fix for 5.3 (still needed with php5.4 as silex does not support the rebind)
         $app = $this;
-
-        return $this;
     }
 
     /**
@@ -72,8 +64,17 @@ class Application extends BaseApplication
     {
         // Fix for 5.3 (still needed with php5.4 as silex does not support the rebind)
         $app = $this;
+    }
 
-        return $this;
+    /**
+     * Register application middlewares
+     *
+     * @return Application
+     */
+    private function registerMiddleware()
+    {
+        // Fix for 5.3 (still needed with php5.4 as silex does not support the rebind)
+        $app = $this;
     }
 
     /**
@@ -90,7 +91,5 @@ class Application extends BaseApplication
         $this->get('/', function() use ($app) {
             return 'Hello World';
         });
-
-        return $this;
     }
 }
