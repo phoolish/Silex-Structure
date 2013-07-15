@@ -26,7 +26,7 @@ class Application extends BaseApplication
     /**
      * Register parameters
      *
-     * @return Application
+     * @return void
      */
     private function registerParameters()
     {
@@ -36,7 +36,7 @@ class Application extends BaseApplication
     /**
      * Register silex service providers
      *
-     * @return Application
+     * @return void
      */
     private function registerServiceProviders()
     {
@@ -47,7 +47,7 @@ class Application extends BaseApplication
      * Register controller classes to the Silex/Pimple DIC when using
      * ServiceControllerServiceProvider
      *
-     * @return Application
+     * @return void
      */
     private function registerControllers()
     {
@@ -58,7 +58,7 @@ class Application extends BaseApplication
     /**
      * Register model classes to the Silex/Pimple DIC
      *
-     * @return Application
+     * @return void
      */
     private function registerModels()
     {
@@ -69,7 +69,7 @@ class Application extends BaseApplication
     /**
      * Register application middlewares
      *
-     * @return Application
+     * @return void
      */
     private function registerMiddleware()
     {
@@ -80,7 +80,7 @@ class Application extends BaseApplication
     /**
      * Register silex routes
      *
-     * @return Application
+     * @return void
      */
     private function registerRoutes()
     {
