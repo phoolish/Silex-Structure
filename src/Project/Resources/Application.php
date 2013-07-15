@@ -4,6 +4,10 @@ namespace Project\Resources;
 
 use Silex\Application as BaseApplication;
 
+use Silex\Provider\TwigServiceProvider;
+use Silex\Provider\SessionServiceProvider;
+use Silex\Provider\UrlGeneratorServiceProvider;
+
 class Application extends BaseApplication
 {
     /**
@@ -40,7 +44,11 @@ class Application extends BaseApplication
      */
     private function registerServiceProviders()
     {
-
+        $this->register(new SessionServiceProvider());
+        $this->register(new UrlGeneratorServiceProvider());
+        $this->register(new TwigServiceProvider(), array(
+            'twig.path' => __DIR__.'/views',
+        ));
     }
 
     /**
